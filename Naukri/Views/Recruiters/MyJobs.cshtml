@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Naukri.Models.Job>
+
+@{
+    ViewBag.Title = "MyJobs";
+}
+@if (Model.Count() == 0)
+{
+    <h2 style="color:red">You Havn't Posted Any Job</h2>
+    <span>Click Here To </span>@Html.ActionLink("Add Job", "PostJob", "Recruiters")
+}
+else
+{
+    <h2>Job Posted By Me</h2>
+    <table class="Table-div table   table-hover">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.Recruiter.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recruiter.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    <input type="button" value="See Who Applied" class="btn btn-success btn-sm" onclick="location.href='@Url.Action("AppliedDetails", "Recruiters", new { jobId = item.JobId })'" />
+
+                </td>
+
+            </tr>
+        }
+
+    </table>
+}

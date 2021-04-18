@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Naukri.Models.Job>
+
+@{
+    ViewBag.Title = "GetAllJobs";
+}
+
+@if (Model.Count() == 0)
+{
+    <h2 style="color:red"> No Jobs To Show</h2>
+    <h2> Come Later For More Oppurunity......</h2>
+}
+else
+{
+
+    <h2>Jobs To Apply</h2>
+    <table class="Table-div table   table-hover">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.Recruiter.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Recruiter.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    <input type="button" value="Click To Apply" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("Apply", "Candidates", new { jobId = item.JobId })'" />
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Naukri.Models.AppliedJob>
+
+@{
+    ViewBag.Title = "GetMyAppliedJobs";
+}
+@if (Model.Count() == 0)
+{
+    <h2 style="color:red"> Sorry !..</h2>
+    <h2> You Havn't Applied To Any Jobs....</h2>
+}
+else
+{
+    <h2>Applied Jobs</h2>
+    <table class="Table-div table   table-hover">
+        <tr class="table-header">
+            <th>
+                @Html.DisplayNameFor(model => model.Job.Recruiter.Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job.Salary)
+            </th>
+           
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.Recruiter.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Job.Salary)
+                </td>
+                
+                <td>
+                    <input type="button" value="More Details" class="btn btn-primary btn-sm" onclick="location.href='@Url.Action("GetRecruiterDetails", "Candidates", new { recruiterId = item.Job.Recruiter.Id })'" />
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}

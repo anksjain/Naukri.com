@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Welcome To Naukri.com</h1>
+    <p class="lead">Choose a job you love, and you will never have to work a day in your life.</p>
+</div>
+@if (Session["UserName"] == null)
+{
+<div class="row">
+    <div class="col-md-6">
+        <h2>Recruiters</h2>
+        <p>
+            Make your next great hire with Naukri.com. There is no charge to post jobs!
+        </p>
+        <p>
+            <input type="button" value="Hire Now" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("RecruiterLogin", "Account")'" />
+        </p>
+    </div>
+    <div class="col-md-6">
+        <h2>Job Seekers</h2>
+        <p>
+            We put your hard-to-fill jobs in front of millions of job seekers
+        </p>
+        <p>
+            <input type="button" value="Get Hire" class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("CandidateLogin", "Account")'" />
+        </p>
+    </div>
+    
+</div>
+}
