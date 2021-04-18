@@ -33,12 +33,13 @@ namespace Naukri.Controllers
                 if (encrypt.Compare(model.Password, userExist.Password))
                 {
                     Session["UserName"] = userExist.Email;
+                    Session["Name"] = userExist.FirstName;
                     Session["Role"] = "Candidate";
                     return RedirectToAction("GetAllJobs", "Candidates");
                 }
                 
             }
-            ModelState.AddModelError("", "Enter Correct UserId/Passowrd");
+            ModelState.AddModelError("", "Enter Correct UserId/Passoword");
             return View(model);
         }
 
@@ -57,6 +58,7 @@ namespace Naukri.Controllers
                 if (encrypt.Compare(model.Password, userExist.Password))
                 {
                     Session["UserName"] = userExist.Email;
+                    Session["Name"] = userExist.FirstName;
                     Session["Role"] = "Recruiter";
                     return RedirectToAction("MyJobs", "Recruiters");
                 }

@@ -11,7 +11,7 @@ namespace Naukri.Models
         [Required]
         [DataType(DataType.EmailAddress)]
         [EmailAddress]
-        [Display(Name ="User Name")]
+        [Display(Name ="Email Address")]
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
