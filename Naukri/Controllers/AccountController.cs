@@ -39,7 +39,7 @@ namespace Naukri.Controllers
                 }
                 
             }
-            ModelState.AddModelError("", "Enter Correct UserId/Passoword");
+            ModelState.AddModelError("", "Enter Correct UserId/Password");
             return View(model);
         }
 
@@ -64,7 +64,7 @@ namespace Naukri.Controllers
                 }
 
             }
-            ModelState.AddModelError("", "Enter Correct UserId/Passowrd");
+            ModelState.AddModelError("", "Enter Correct UserId/Password");
             return View(model);
         }
 
